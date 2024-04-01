@@ -234,8 +234,40 @@ def function_section():
    sl.image('image/function_salesperson.png')
 
 
-
 def bottom_section():
+
+   column = sl.columns([0.2, 1, 1, 1, 1])
+
+   with column[1]:
+      sl.subheader('SITE')
+      sl.write('Home & Log in')
+      sl.write('Farmer')
+      sl.write('Supervisor')
+      sl.write('Salesperson')
+      sl.write('Customer')
+      
+   with column[2]:
+      sl.subheader('TECH')
+      sl.write('Streamlit')
+      sl.write('Python 3')
+      sl.write('MySQL')
+      sl.write('Keynote')
+   
+   with column[3]:
+      sl.subheader('TEAM')
+      sl.write('Chenxi Zhao')
+      sl.write('Jina Lee')
+      sl.write('Na liu')
+      sl.write('Weihong Zhu')
+      sl.write('Xiaobei Zhao')
+
+   with column[4]:
+      sl.subheader('SOCIAL')
+      sl.write('GitHub')
+      sl.write('CAU')
+      sl.write('Xuanwei City')
+
+   sl.markdown('---')
 
    sl.markdown("""
       <center>
@@ -263,10 +295,11 @@ if __name__ == '__main__':
    set_background('./image/ham_2_mask.jpg')
     
    title_section()
+   sl.markdown('<br>', unsafe_allow_html=True)
    username = login_section()
    if username != None:
       goto_next_page_section(username)
-   sl.markdown('---')
+   # sl.markdown('---')
    introduction_section()
    sl.markdown('---')
    function_section()
