@@ -114,7 +114,40 @@ def trace_side_section(username):
 
    sl.sidebar.header('开始追溯')
 
+   default_id = '1001'
+   id = sl.sidebar.text_input('火腿编号', default_id)
 
+   sl.subheader('品质评级')
+   r = select_from_table('evaluate', f"id = '{id}'")
+   if len(r) == 0:
+      sl.text('暂未评级')
+   else:
+      quality = r[0][1]
+      column = sl.columns([2, 6, 2])
+      with column[1]:
+         if quality == 'gold_medal':
+            sl.image('image/quality_gold_medal.png')
+         elif quality == 'regular':
+            sl.image('image/quality_regular.png')
+
+   sl.subheader('生产来源')
+   l = select_from_table('ham', f"ham_id = '{id}'")
+   
+   ham_id_list = [x[0] for x in l]
+   user_list = [x[1] for x in l]
+   ham_time_list = [x[2] for x in l]
+   ham_place_list = [x[3] for x in l]
+   ham_state_list = [x[4] for x in l]
+
+   data = {
+    '编号': ham_id_list,
+    '角色': user_list,
+    '时间': ham_time_list,
+    '城市': ham_place_list,
+    '状态': ham_state_list
+   }
+   df = pd.DataFrame(data)
+   sl.table(df)
 
 
 if __name__ == '__main__':
@@ -123,7 +156,7 @@ if __name__ == '__main__':
    page_icon = '🍗'
    sl.set_page_config(page_name, page_icon)
 
-   # set_background('image/supervisor_background.jpg')
+   set_background('image/supervisor_background_2.png')
 
    username = get_information_section()
 

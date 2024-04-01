@@ -80,6 +80,8 @@ if __name__ == '__main__':
    page_icon = '🍗'
    sl.set_page_config(page_name, page_icon)
 
+   set_background('image/farmer_background.png')
+
    username = get_information_section()
 
    title_section(username)
