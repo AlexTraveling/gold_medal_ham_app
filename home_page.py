@@ -257,7 +257,7 @@ def bottom_section():
       sl.subheader('TEAM')
       sl.write('Chenxi Zhao')
       sl.write('Jina Lee')
-      sl.write('Na liu')
+      sl.write('Na Liu')
       sl.write('Weihong Zhu')
       sl.write('Xiaobei Zhao')
 
